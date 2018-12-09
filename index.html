@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Firebase Train Schedule</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Here is our firebase reference, it will allow us to request and 
+    pull up information from firebase to update our train schedule in real time -->
+	<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+		
+	<!-- jQuery link -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+
+
+	<!-- Font awesome link just to make  -->
+    <script src="https://use.fontawesome.com/8c1fdea402.js"></script>
+
+</head>
+<body>
+    <!--This holds our header and -->
+	<div class="container bg-primary text-white py-3 mb-3">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-12 text-center pt-2">
+		
+			</div>
+			<div class="col-lg-7 col-md-8 col-sm-12 text-center pt-4">
+				<h1>Bullet Train Scheduler</h1>
+			
+			</div>
+		</div>
+    </div>
+    <!--the bootstrap code to cut our page into 
+    colums that will make the data from firebase nice and easy to read
+by splitting it up into categories as well as a button to clear individual
+train info lines-->
+	<div class="container px-0">
+		<div class="card mb-3">
+            <!-- this section will alert users to the current default schedule-->
+			<h5 class="card-header rounded-0 bg-primary text-white md-5">Current Train Schedule</h5>
+			<div class="card-body">
+			<table class="table table-hover" id="train-table">
+				<thead>
+                    <!-- This is where we break up the colums and label 
+                    where each specific set of information will show up
+                when pulled from Firebase-->
+					<tr>
+						<th scope="col">Delete</th>
+						<th scope="col">Route</th>
+						<th scope="col">Desitination</th>
+						<th scope="col">Next Train</th>
+						<th scope="col">Run time</th>
+						<th scope="col">Minutes Away</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			</div>
+		</div>
+    </div>
+    
+    <!-- This is the container for our search field that will allow users
+    to input their own information that will look through the data base and 
+pull up their own sets of custom train info-->
+	<div class="container px-0">
+		<div class="card mb-3">
+			<h5 class="card-header  rounded-0 text-white bg-primary">Train Schedule Search</h5>
+			<div class="card-body">
+				<form>
+					<div class="form-group">
+					<label for="trainname-input" class= "font-weight-bold">Route</label>
+					<input type="text" class="form-control" id="route-input" >
+					</div>
+					<div class="form-group">
+					<label for="destination-input" class= "font-weight-bold">Destination</label>
+					<input type="text" class="form-control" id="destination-input">
+					</div>
+					<div class="form-group">
+					<label for="firsttime-input" class= "font-weight-bold">Next Train</label>
+					<input data-format=" hh:mm" type="text" class="form-control" id="nexttrain-input">
+					</div>
+					<div class="form-group">
+					<label for="frequency-input" class= "font-weight-bold">Run Times</label>
+					<input type="number" class="form-control" id="runtime-input">
+					</div>
+					<button type="submit" class="btn btn-primary rounded-0 " id="add-train">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="script.js"></script>
+
+</body>
+</html>
